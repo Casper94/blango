@@ -60,6 +60,8 @@ class Dev(Configuration):
         "rest_framework",
         "rest_framework.authtoken",
 
+        "drf_yasg",
+
     ]
 
     REST_FRAMEWORK = {
@@ -103,7 +105,7 @@ class Dev(Configuration):
     ]
 
     WSGI_APPLICATION = 'blango.wsgi.application'
-
+    
 
     # Database
     # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -177,6 +179,13 @@ class Dev(Configuration):
     # 'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     # ] 
     INTERNAL_IPS = ["192.168.11.179"]
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
 
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     ACCOUNT_ACTIVATION_DAYS = 7
